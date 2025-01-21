@@ -33,7 +33,7 @@ limitations under the License.
 
 [![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
 
-> Apply a plane rotation with real cosine and complex sine to a pair of complex vectors.
+> Apply a plane rotation with real cosine and complex sine to a pair of double-precision complex floating-point vectors.
 
 <section class="installation">
 
