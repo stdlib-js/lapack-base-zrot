@@ -35,38 +35,32 @@ limitations under the License.
 
 > Apply a plane rotation with real cosine and complex sine to a pair of double-precision complex floating-point vectors.
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/lapack-base-zrot
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-zrot = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/lapack-base-zrot@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var zrot = require( 'path/to/vendor/umd/lapack-base-zrot/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/lapack-base-zrot@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.zrot;
-})();
-</script>
+var zrot = require( '@stdlib/lapack-base-zrot' );
 ```
 
 #### zrot( N, zx, strideX, zy, strideY, c, s )
@@ -76,8 +70,6 @@ Applies a plane rotation with real cosine and complex sine.
 ```javascript
 var Complex128Array = require( '@stdlib/array-complex128' );
 var Complex128 = require( '@stdlib/complex-float64-ctor' );
-var real = require( '@stdlib/complex-float64-real' );
-var imag = require( '@stdlib/complex-float64-imag' );
 
 var zx = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0 ] );
 var zy = new Complex128Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
@@ -86,22 +78,10 @@ var s = new Complex128( 0.0, 0.75 );
 zrot( zx.length, zx, 1, zy, 1, 1.25, s );
 
 var z = zy.get( 0 );
-// returns <Complex128>
-
-var re = real( z );
-// returns ~-1.5
-
-var im = imag( z );
-// returns ~0.75
+// returns <Complex128>[ ~-1.5, ~0.75 ]
 
 z = zx.get( 0 );
-// returns <Complex128>
-
-re = real( z );
-// returns ~1.25
-
-im = imag( z );
-// returns ~2.5
+// returns <Complex128>[ ~1.25, ~2.5 ]
 ```
 
 The function has the following parameters:
@@ -117,8 +97,6 @@ The `N` and stride parameters determine how values from `zx` and `zy` are access
 ```javascript
 var Complex128Array = require( '@stdlib/array-complex128' );
 var Complex128 = require( '@stdlib/complex-float64-ctor' );
-var real = require( '@stdlib/complex-float64-real' );
-var imag = require( '@stdlib/complex-float64-imag' );
 
 var zx = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0 ] );
 var zy = new Complex128Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
@@ -127,22 +105,10 @@ var s = new Complex128( 0.0, 0.75 );
 zrot( 2, zx, 2, zy, 2, 1.25, s );
 
 var z = zy.get( 0 );
-// returns <Complex128>
-
-var re = real( z );
-// returns ~-1.5
-
-var im = imag( z );
-// returns ~0.75
+// returns <Complex128>[ ~-1.5, ~0.75 ]
 
 z = zx.get( 0 );
-// returns <Complex128>
-
-re = real( z );
-// returns ~1.25
-
-im = imag( z );
-// returns ~2.5
+// returns <Complex128>[ ~1.25, ~2.5 ]
 ```
 
 Note that indexing is relative to the first index. To introduce an offset, use [`typed array`][mdn-typed-array] views.
@@ -152,8 +118,6 @@ Note that indexing is relative to the first index. To introduce an offset, use [
 ```javascript
 var Complex128Array = require( '@stdlib/array-complex128' );
 var Complex128 = require( '@stdlib/complex-float64-ctor' );
-var real = require( '@stdlib/complex-float64-real' );
-var imag = require( '@stdlib/complex-float64-imag' );
 
 // Initial arrays...
 var zx0 = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0 ] );
@@ -168,22 +132,10 @@ var s = new Complex128( 0.0, 0.75 );
 zrot( 2, zx1, -2, zy1, 1, 1.25, s );
 
 var z = zy0.get( 2 );
-// returns <Complex128>
-
-var re = real( z );
-// returns ~-6
-
-var im = imag( z );
-// returns ~5.25
+// returns <Complex128>[ ~-6.0, ~5.25 ]
 
 z = zx0.get( 3 );
-// returns <Complex128>
-
-re = real( z );
-// returns ~8.75
-
-im = imag( z );
-// returns ~10
+// returns <Complex128>[ ~8.75, ~10.0 ]
 ```
 
 #### zrot.ndarray( N, zx, strideX, offsetX, zy, strideY, offsetY, c, s )
@@ -193,8 +145,6 @@ Applies a plane rotation with real cosine and complex sine using alternative ind
 ```javascript
 var Complex128Array = require( '@stdlib/array-complex128' );
 var Complex128 = require( '@stdlib/complex-float64-ctor' );
-var real = require( '@stdlib/complex-float64-real' );
-var imag = require( '@stdlib/complex-float64-imag' );
 
 var zx = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0 ] );
 var zy = new Complex128Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
@@ -203,22 +153,10 @@ var s = new Complex128( 0.0, 0.75 );
 zrot.ndarray( zx.length, zx, 1, 0, zy, 1, 0, 1.25, s );
 
 var z = zy.get( 0 );
-// returns <Complex128>
-
-var re = real( z );
-// returns ~-1.5
-
-var im = imag( z );
-// returns ~0.75
+// returns <Complex128>[ ~-1.5, ~0.75 ]
 
 z = zx.get( 0 );
-// returns <Complex128>
-
-re = real( z );
-// returns ~1.25
-
-im = imag( z );
-// returns ~2.5
+// returns <Complex128>[ ~1.25, ~2.5 ]
 ```
 
 The function has the following additional parameters:
@@ -231,8 +169,6 @@ While [`typed array`][mdn-typed-array] views mandate a view offset based on the 
 ```javascript
 var Complex128Array = require( '@stdlib/array-complex128' );
 var Complex128 = require( '@stdlib/complex-float64-ctor' );
-var real = require( '@stdlib/complex-float64-real' );
-var imag = require( '@stdlib/complex-float64-imag' );
 
 var zx = new Complex128Array( [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0 ] );
 var zy = new Complex128Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
@@ -241,22 +177,10 @@ var s = new Complex128( 0.0, 0.75 );
 zrot.ndarray( 2, zx, 2, 1, zy, 2, 1, 1.25, s );
 
 var z = zy.get( 3 );
-// returns <Complex128>
-
-var re = real( z );
-// returns ~-6.0
-
-var im = imag( z );
-// returns ~5.25
+// returns <Complex128>[ ~-6.0, ~5.25 ]
 
 z = zx.get( 1 );
-// returns <Complex128>
-
-re = real( z );
-// returns ~3.75
-
-im = imag( z );
-// returns ~5.0
+// returns <Complex128>[ ~3.75, ~5.0 ]
 ```
 
 </section>
@@ -280,19 +204,14 @@ im = imag( z );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-base-discrete-uniform@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-filled-by@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/complex-float64-ctor@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-base-zcopy@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-zeros@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/console-log-each@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/lapack-base-zrot@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var discreteUniform = require( '@stdlib/random-base-discrete-uniform' );
+var filledarrayBy = require( '@stdlib/array-filled-by' );
+var Complex128 = require( '@stdlib/complex-float64-ctor' );
+var zcopy = require( '@stdlib/blas-base-zcopy' );
+var zeros = require( '@stdlib/array-zeros' );
+var logEach = require( '@stdlib/console-log-each' );
+var zrot = require( '@stdlib/lapack-base-zrot' );
 
 function rand() {
     return new Complex128( discreteUniform( 0, 10 ), discreteUniform( -5, 5 ) );
@@ -312,11 +231,6 @@ zrot( zx.length, zx, 1, zy, 1, 1.25, s );
 
 // Print the results:
 logEach( '(%s,%s) => (%s,%s)', zxc, zyc, zx, zy );
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -409,7 +323,7 @@ Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
-[@stdlib/array/complex128]: https://github.com/stdlib-js/array-complex128/tree/umd
+[@stdlib/array/complex128]: https://github.com/stdlib-js/array-complex128
 
 </section>
 
