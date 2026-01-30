@@ -42,6 +42,11 @@ limitations under the License.
 ## Usage
 
 ```javascript
+import zrot from 'https://cdn.jsdelivr.net/gh/stdlib-js/lapack-base-zrot@deno/mod.js';
+```
+The previous example will load the latest bundled code from the deno branch. Alternatively, you may load a specific version by loading the file from one of the [tagged bundles](https://github.com/stdlib-js/lapack-base-zrot/tags). For example,
+
+```javascript
 import zrot from 'https://cdn.jsdelivr.net/gh/stdlib-js/lapack-base-zrot@v0.1.0-deno/mod.js';
 ```
 
@@ -193,7 +198,7 @@ import Complex128 from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-float64-ct
 import zcopy from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-base-zcopy@deno/mod.js';
 import zeros from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-zeros@deno/mod.js';
 import logEach from 'https://cdn.jsdelivr.net/gh/stdlib-js/console-log-each@deno/mod.js';
-import zrot from 'https://cdn.jsdelivr.net/gh/stdlib-js/lapack-base-zrot@v0.1.0-deno/mod.js';
+import zrot from 'https://cdn.jsdelivr.net/gh/stdlib-js/lapack-base-zrot@deno/mod.js';
 
 function rand() {
     return new Complex128( discreteUniform( 0, 10 ), discreteUniform( -5, 5 ) );
