@@ -35,32 +35,38 @@ limitations under the License.
 
 > Apply a plane rotation with real cosine and complex sine to a pair of double-precision complex floating-point vectors.
 
-<section class="installation">
 
-## Installation
-
-```bash
-npm install @stdlib/lapack-base-zrot
-```
-
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
 
 <section class="usage">
 
 ## Usage
 
+To use in Observable,
+
 ```javascript
-var zrot = require( '@stdlib/lapack-base-zrot' );
+zrot = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/lapack-base-zrot@umd/browser.js' )
+```
+
+To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
+
+```javascript
+var zrot = require( 'path/to/vendor/umd/lapack-base-zrot/index.js' )
+```
+
+To include the bundle in a webpage,
+
+```html
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/lapack-base-zrot@umd/browser.js"></script>
+```
+
+If no recognized module system is present, access bundle contents via the global scope:
+
+```html
+<script type="text/javascript">
+(function () {
+    window.zrot;
+})();
+</script>
 ```
 
 #### zrot( N, zx, strideX, zy, strideY, c, s )
@@ -204,14 +210,19 @@ z = zx.get( 1 );
 
 <!-- eslint no-undef: "error" -->
 
-```javascript
-var discreteUniform = require( '@stdlib/random-base-discrete-uniform' );
-var filledarrayBy = require( '@stdlib/array-filled-by' );
-var Complex128 = require( '@stdlib/complex-float64-ctor' );
-var zcopy = require( '@stdlib/blas-base-zcopy' );
-var zeros = require( '@stdlib/array-zeros' );
-var logEach = require( '@stdlib/console-log-each' );
-var zrot = require( '@stdlib/lapack-base-zrot' );
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-base-discrete-uniform@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-filled-by@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/complex-float64-ctor@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-base-zcopy@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-zeros@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/console-log-each@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/lapack-base-zrot@umd/browser.js"></script>
+<script type="text/javascript">
+(function () {
 
 function rand() {
     return new Complex128( discreteUniform( 0, 10 ), discreteUniform( -5, 5 ) );
@@ -231,6 +242,11 @@ zrot( zx.length, zx, 1, zy, 1, 1.25, s );
 
 // Print the results:
 logEach( '(%s,%s) => (%s,%s)', zxc, zyc, zx, zy );
+
+})();
+</script>
+</body>
+</html>
 ```
 
 </section>
@@ -323,7 +339,7 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
-[@stdlib/array/complex128]: https://github.com/stdlib-js/array-complex128
+[@stdlib/array/complex128]: https://github.com/stdlib-js/array-complex128/tree/umd
 
 </section>
 
