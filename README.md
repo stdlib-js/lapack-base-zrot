@@ -76,12 +76,8 @@ var zy = new Complex128Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
 var s = new Complex128( 0.0, 0.75 );
 
 zrot( zx.length, zx, 1, zy, 1, 1.25, s );
-
-var z = zy.get( 0 );
-// returns <Complex128>[ ~-1.5, ~0.75 ]
-
-z = zx.get( 0 );
-// returns <Complex128>[ ~1.25, ~2.5 ]
+// zy => <Complex128Array>[ ~-1.5, ~0.75, ~-3.0, ~2.25, ~-4.5, ~3.75, ~-6.0, ~5.25 ]
+// zx => <Complex128Array>[ ~1.25, ~2.5, ~3.75, ~5.0, ~6.25, ~7.5, ~8.75, ~10.0 ]
 ```
 
 The function has the following parameters:
@@ -103,12 +99,8 @@ var zy = new Complex128Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
 var s = new Complex128( 0.0, 0.75 );
 
 zrot( 2, zx, 2, zy, 2, 1.25, s );
-
-var z = zy.get( 0 );
-// returns <Complex128>[ ~-1.5, ~0.75 ]
-
-z = zx.get( 0 );
-// returns <Complex128>[ ~1.25, ~2.5 ]
+// zy => <Complex128Array>[ ~-1.5, ~0.75, 0.0, 0.0, ~-4.5, ~3.75, 0.0, 0.0 ]
+// zx => <Complex128Array>[ ~1.25, ~2.5, 3.0, 4.0, ~6.25, ~7.5, 7.0, 8.0 ]
 ```
 
 Note that indexing is relative to the first index. To introduce an offset, use [`typed array`][mdn-typed-array] views.
@@ -130,12 +122,8 @@ var zy1 = new Complex128Array( zy0.buffer, zy0.BYTES_PER_ELEMENT*2 ); // start a
 var s = new Complex128( 0.0, 0.75 );
 
 zrot( 2, zx1, -2, zy1, 1, 1.25, s );
-
-var z = zy0.get( 2 );
-// returns <Complex128>[ ~-6.0, ~5.25 ]
-
-z = zx0.get( 3 );
-// returns <Complex128>[ ~8.75, ~10.0 ]
+// zy0 => <Complex128Array>[ 0.0, 0.0, 0.0, 0.0, ~-6.0, ~5.25, ~-3.0, ~2.25 ]
+// zx0 => <Complex128Array>[ 1.0, 2.0, ~3.75, ~5.0, 5.0, 6.0, ~8.75, ~10.0 ]
 ```
 
 #### zrot.ndarray( N, zx, strideX, offsetX, zy, strideY, offsetY, c, s )
@@ -151,12 +139,8 @@ var zy = new Complex128Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
 var s = new Complex128( 0.0, 0.75 );
 
 zrot.ndarray( zx.length, zx, 1, 0, zy, 1, 0, 1.25, s );
-
-var z = zy.get( 0 );
-// returns <Complex128>[ ~-1.5, ~0.75 ]
-
-z = zx.get( 0 );
-// returns <Complex128>[ ~1.25, ~2.5 ]
+// zy => <Complex128Array>[ ~-1.5, ~0.75, ~-3.0, ~2.25, ~-4.5, ~3.75 ]
+// zx => <Complex128Array>[ ~1.25, ~2.5, ~3.75, ~5.0, ~6.25, ~7.5 ]
 ```
 
 The function has the following additional parameters:
@@ -175,12 +159,8 @@ var zy = new Complex128Array( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
 var s = new Complex128( 0.0, 0.75 );
 
 zrot.ndarray( 2, zx, 2, 1, zy, 2, 1, 1.25, s );
-
-var z = zy.get( 3 );
-// returns <Complex128>[ ~-6.0, ~5.25 ]
-
-z = zx.get( 1 );
-// returns <Complex128>[ ~3.75, ~5.0 ]
+// zy => <Complex128Array>[ 0.0, 0.0, ~-3.0, ~2.25, 0.0, 0.0, ~-6.0, ~5.25 ]
+// zx => <Complex128Array>[ 1.0, 2.0, ~3.75, ~5.0, 5.0, 6.0, ~8.75, ~10.0 ]
 ```
 
 </section>

@@ -4,7 +4,7 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2026-04-29)
+## Unreleased (2026-05-09)
 
 <section class="commits">
 
@@ -12,6 +12,7 @@
 
 <details>
 
+-   [`212d36e`](https://github.com/stdlib-js/stdlib/commit/212d36e260c813c5969e4b3c26f4b04766fd6df8) - **docs:** improve doctests for complex number typed arrays in `lapack/base/zrot` [(#12025)](https://github.com/stdlib-js/stdlib/pull/12025) _(by Karan Anand)_
 -   [`ace22bd`](https://github.com/stdlib-js/stdlib/commit/ace22bd1a1e27e34ee1436e7ed5a82be99584f34) - **bench:** refactor to use string interpolation in `lapack/base/zrot` [(#10131)](https://github.com/stdlib-js/stdlib/pull/10131) _(by Prajjwal Bajpai)_
 
 </details>
@@ -24,8 +25,9 @@
 
 ### Contributors
 
-A total of 1 person contributed to this release. Thank you to this contributor:
+A total of 2 people contributed to this release. Thank you to the following contributors:
 
+-   Karan Anand
 -   Prajjwal Bajpai
 
 </section>
